@@ -1,0 +1,71 @@
+{
+ "data": {
+  "id": 9003,
+  "date": "2026-11-14T12:00:00+01:00",
+  "status": "scheduled",
+  "cancellation_minute": null,
+  "home": {
+   "id": 1001,
+   "name": "Voorbeeld JO14-2",
+   "short_name": "JO14-2",
+   "logo": "https://example.invalid/logo.png",
+   "federation_reference_id": "HV00AA1"
+  },
+  "away": {
+   "id": 2002,
+   "name": "Fictief JO14-3",
+   "short_name": "JO14-3",
+   "logo": "https://example.invalid/logo.png",
+   "federation_reference_id": "HV00CC3"
+  },
+  "shootouts": {
+   "home": 0,
+   "away": 0
+  },
+  "score": {
+   "home": 0,
+   "away": 0
+  },
+  "location": {
+   "facility": {
+    "name": "Sportpark Voorbeeld",
+    "address": "Voorbeeldlaan 1\n1234AB Voorbeeldstad"
+   },
+   "field": {
+    "id": null,
+    "name": "Veld 2",
+    "type": "Kunstgras"
+   }
+  },
+  "poule_name": "Jongens O14 Test - Poule A",
+  "poule_id": 5001,
+  "remarks": {
+   "official": "Graag 30 minuten eerder aanwezig",
+   "info": null
+  },
+  "competition_name": "Jongens O14 Test",
+  "competition_season": "2026-2027",
+  "round": 1,
+  "actions": [],
+  "videos": [],
+  "weather": {
+   "condition_code": "Drizzle",
+   "rating": "good",
+   "grade": 7,
+   "temperature": 8.4,
+   "temperature_apparent": 6.1,
+   "precipitation_type": "rain",
+   "precipitation_chance": 40,
+   "precipitation_amount": 0.3,
+   "humidity": 88,
+   "description": "Een paar druppels, maar prima hockeyweer.",
+   "icon": {
+    "vector": "https://example.invalid/rain.svg",
+    "raster": "https://example.invalid/rain.png",
+    "name": "cloud.drizzle"
+   }
+  },
+  "approved_by_home_team": false,
+  "approved_by_away_team": false
+ }
+}

@@ -1,0 +1,624 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Zoek je club",
+        "description": "De gegevens komen uit het wedstrijdcentrum van de KNHB op hockey.nl. Een account is niet nodig.",
+        "data": {
+          "query": "Clubnaam of plaats"
+        },
+        "data_description": {
+          "query": "Bijvoorbeeld een deel van de clubnaam, of de plaats waar de club speelt."
+        }
+      },
+      "club": {
+        "title": "Kies de club",
+        "data": {
+          "club_id": "Club"
+        }
+      },
+      "team": {
+        "title": "Kies het team",
+        "description": "Teams van {club}. Voeg elk team dat je wilt volgen apart toe, bijvoorbeeld een veld- en een zaalteam.",
+        "data": {
+          "team_id": "Team"
+        },
+        "data_description": {
+          "team_id": "Veld of zaal, en de leeftijdsgroep."
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Kon de wedstrijdgegevens van de KNHB niet bereiken. Probeer het later opnieuw.",
+      "rate_limited": "De wedstrijdgegevens van de KNHB zijn even druk (te veel verzoeken vanaf dit netwerk). Wacht een minuut en probeer het opnieuw.",
+      "no_clubs_found": "Geen club gevonden. Probeer een korter deel van de naam, of de plaats."
+    },
+    "abort": {
+      "already_configured": "Dit team is al ingesteld.",
+      "no_teams": "{club} heeft op dit moment geen teams met een competitie."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Verzameltijd",
+        "description": "Wanneer het team verzamelt voor de aanvang. Gebruikt voor de sensor verzameltijd en in wijzigingsmeldingen.",
+        "data": {
+          "meet_minutes_home": "Thuiswedstrijden (minuten voor aanvang)",
+          "meet_minutes_away": "Uitwedstrijden (minuten voor aanvang)"
+        },
+        "data_description": {
+          "meet_minutes_home": "Bijvoorbeeld 30: verzamelen om 11:30 bij een wedstrijd om 12:00.",
+          "meet_minutes_away": "Zonder reistijd: dit is wanneer je op de accommodatie moet zijn."
+        }
+      }
+    }
+  },
+  "entity": {
+    "calendar": {
+      "matches": {
+        "name": "Wedstrijden"
+      }
+    },
+    "sensor": {
+      "next_match": {
+        "name": "Volgende wedstrijd",
+        "state_attributes": {
+          "opponent": {
+            "name": "Tegenstander"
+          },
+          "home_away": {
+            "name": "Thuis of uit",
+            "state": {
+              "home": "Thuis",
+              "away": "Uit"
+            }
+          },
+          "home_team": {
+            "name": "Thuisteam"
+          },
+          "away_team": {
+            "name": "Uitteam"
+          },
+          "start": {
+            "name": "Aanvang"
+          },
+          "end": {
+            "name": "Einde (verwacht)"
+          },
+          "venue": {
+            "name": "Accommodatie"
+          },
+          "address": {
+            "name": "Adres"
+          },
+          "field": {
+            "name": "Veld"
+          },
+          "competition": {
+            "name": "Competitie"
+          },
+          "poule": {
+            "name": "Poule"
+          },
+          "remarks": {
+            "name": "Opmerkingen"
+          },
+          "status": {
+            "name": "Status",
+            "state": {
+              "scheduled": "Gepland",
+              "announced": "Aangekondigd",
+              "live": "Live",
+              "result": "Uitslag ingevoerd",
+              "final": "Definitief",
+              "discontinued": "Gestaakt",
+              "cancelled": "Afgelast",
+              "expired": "Verlopen",
+              "unknown": "Onbekend"
+            }
+          },
+          "match_id": {
+            "name": "Wedstrijd-ID"
+          },
+          "opponent_logo": {
+            "name": "Logo tegenstander"
+          },
+          "meet_time": {
+            "name": "Verzameltijd"
+          },
+          "opponent_rank": {
+            "name": "Positie tegenstander"
+          },
+          "opponent_points": {
+            "name": "Punten tegenstander"
+          },
+          "opponent_form": {
+            "name": "Vorm tegenstander"
+          },
+          "previous_meeting": {
+            "name": "Vorige ontmoeting"
+          },
+          "previous_meeting_result": {
+            "name": "Uitslag vorige ontmoeting",
+            "state": {
+              "win": "Gewonnen",
+              "draw": "Gelijkspel",
+              "loss": "Verloren"
+            }
+          },
+          "upcoming": {
+            "name": "Komende wedstrijden"
+          }
+        }
+      },
+      "opponent": {
+        "name": "Volgende tegenstander",
+        "state_attributes": {
+          "home_away": {
+            "name": "Thuis of uit",
+            "state": {
+              "home": "Thuis",
+              "away": "Uit"
+            }
+          },
+          "start": {
+            "name": "Aanvang"
+          },
+          "venue": {
+            "name": "Accommodatie"
+          },
+          "opponent_rank": {
+            "name": "Positie tegenstander"
+          },
+          "opponent_points": {
+            "name": "Punten tegenstander"
+          },
+          "opponent_form": {
+            "name": "Vorm tegenstander"
+          }
+        }
+      },
+      "home_away": {
+        "name": "Thuis of uit",
+        "state": {
+          "home": "Thuis",
+          "away": "Uit"
+        },
+        "state_attributes": {
+          "opponent": {
+            "name": "Tegenstander"
+          },
+          "home_away": {
+            "name": "Thuis of uit",
+            "state": {
+              "home": "Thuis",
+              "away": "Uit"
+            }
+          },
+          "home_team": {
+            "name": "Thuisteam"
+          },
+          "away_team": {
+            "name": "Uitteam"
+          },
+          "start": {
+            "name": "Aanvang"
+          },
+          "end": {
+            "name": "Einde (verwacht)"
+          },
+          "venue": {
+            "name": "Accommodatie"
+          },
+          "address": {
+            "name": "Adres"
+          },
+          "field": {
+            "name": "Veld"
+          },
+          "competition": {
+            "name": "Competitie"
+          },
+          "poule": {
+            "name": "Poule"
+          },
+          "remarks": {
+            "name": "Opmerkingen"
+          },
+          "status": {
+            "name": "Status",
+            "state": {
+              "scheduled": "Gepland",
+              "announced": "Aangekondigd",
+              "live": "Live",
+              "result": "Uitslag ingevoerd",
+              "final": "Definitief",
+              "discontinued": "Gestaakt",
+              "cancelled": "Afgelast",
+              "expired": "Verlopen",
+              "unknown": "Onbekend"
+            }
+          },
+          "match_id": {
+            "name": "Wedstrijd-ID"
+          },
+          "opponent_logo": {
+            "name": "Logo tegenstander"
+          }
+        }
+      },
+      "last_result": {
+        "name": "Laatste uitslag",
+        "state": {
+          "win": "Gewonnen",
+          "draw": "Gelijkspel",
+          "loss": "Verloren"
+        },
+        "state_attributes": {
+          "opponent": {
+            "name": "Tegenstander"
+          },
+          "home_away": {
+            "name": "Thuis of uit",
+            "state": {
+              "home": "Thuis",
+              "away": "Uit"
+            }
+          },
+          "home_team": {
+            "name": "Thuisteam"
+          },
+          "away_team": {
+            "name": "Uitteam"
+          },
+          "start": {
+            "name": "Aanvang"
+          },
+          "end": {
+            "name": "Einde (verwacht)"
+          },
+          "venue": {
+            "name": "Accommodatie"
+          },
+          "address": {
+            "name": "Adres"
+          },
+          "field": {
+            "name": "Veld"
+          },
+          "competition": {
+            "name": "Competitie"
+          },
+          "poule": {
+            "name": "Poule"
+          },
+          "remarks": {
+            "name": "Opmerkingen"
+          },
+          "status": {
+            "name": "Status",
+            "state": {
+              "scheduled": "Gepland",
+              "announced": "Aangekondigd",
+              "live": "Live",
+              "result": "Uitslag ingevoerd",
+              "final": "Definitief",
+              "discontinued": "Gestaakt",
+              "cancelled": "Afgelast",
+              "expired": "Verlopen",
+              "unknown": "Onbekend"
+            }
+          },
+          "match_id": {
+            "name": "Wedstrijd-ID"
+          },
+          "opponent_logo": {
+            "name": "Logo tegenstander"
+          },
+          "score": {
+            "name": "Uitslag"
+          },
+          "goals_for": {
+            "name": "Doelpunten voor"
+          },
+          "goals_against": {
+            "name": "Doelpunten tegen"
+          }
+        }
+      },
+      "standing": {
+        "name": "Positie",
+        "state_attributes": {
+          "points": {
+            "name": "Punten"
+          },
+          "played": {
+            "name": "Gespeeld"
+          },
+          "wins": {
+            "name": "Gewonnen"
+          },
+          "draws": {
+            "name": "Gelijk"
+          },
+          "losses": {
+            "name": "Verloren"
+          },
+          "goals_for": {
+            "name": "Doelpunten voor"
+          },
+          "goals_against": {
+            "name": "Doelpunten tegen"
+          },
+          "goal_difference": {
+            "name": "Doelsaldo"
+          },
+          "rank_change": {
+            "name": "Verandering positie"
+          },
+          "teams": {
+            "name": "Teams in poule"
+          },
+          "competition": {
+            "name": "Competitie"
+          },
+          "poule": {
+            "name": "Poule"
+          },
+          "table": {
+            "name": "Stand"
+          },
+          "form": {
+            "name": "Vorm"
+          }
+        }
+      },
+      "meet_time": {
+        "name": "Verzameltijd",
+        "state_attributes": {
+          "opponent": {
+            "name": "Tegenstander"
+          },
+          "home_away": {
+            "name": "Thuis of uit",
+            "state": {
+              "home": "Thuis",
+              "away": "Uit"
+            }
+          },
+          "home_team": {
+            "name": "Thuisteam"
+          },
+          "away_team": {
+            "name": "Uitteam"
+          },
+          "start": {
+            "name": "Aanvang"
+          },
+          "end": {
+            "name": "Einde (verwacht)"
+          },
+          "venue": {
+            "name": "Accommodatie"
+          },
+          "address": {
+            "name": "Adres"
+          },
+          "field": {
+            "name": "Veld"
+          },
+          "competition": {
+            "name": "Competitie"
+          },
+          "poule": {
+            "name": "Poule"
+          },
+          "remarks": {
+            "name": "Opmerkingen"
+          },
+          "status": {
+            "name": "Status",
+            "state": {
+              "scheduled": "Gepland",
+              "announced": "Aangekondigd",
+              "live": "Live",
+              "result": "Uitslag ingevoerd",
+              "final": "Definitief",
+              "discontinued": "Gestaakt",
+              "cancelled": "Afgelast",
+              "expired": "Verlopen",
+              "unknown": "Onbekend"
+            }
+          },
+          "match_id": {
+            "name": "Wedstrijd-ID"
+          },
+          "opponent_logo": {
+            "name": "Logo tegenstander"
+          }
+        }
+      },
+      "match_weather": {
+        "name": "Weer bij volgende wedstrijd",
+        "state_attributes": {
+          "condition": {
+            "name": "Weertype"
+          },
+          "apparent_temperature": {
+            "name": "Gevoelstemperatuur"
+          },
+          "precipitation_type": {
+            "name": "Soort neerslag"
+          },
+          "precipitation_probability": {
+            "name": "Kans op neerslag"
+          },
+          "precipitation": {
+            "name": "Neerslag"
+          },
+          "humidity": {
+            "name": "Luchtvochtigheid"
+          },
+          "rating": {
+            "name": "Beoordeling"
+          },
+          "grade": {
+            "name": "Cijfer"
+          },
+          "description": {
+            "name": "Verwachting"
+          },
+          "match_id": {
+            "name": "Wedstrijd-ID"
+          },
+          "start": {
+            "name": "Aanvang"
+          }
+        }
+      }
+    },
+    "binary_sensor": {
+      "match_today": {
+        "name": "Wedstrijd vandaag",
+        "state_attributes": {
+          "start": {
+            "name": "Aanvang"
+          },
+          "meet_time": {
+            "name": "Verzameltijd"
+          },
+          "opponent": {
+            "name": "Tegenstander"
+          },
+          "home_away": {
+            "name": "Thuis of uit",
+            "state": {
+              "home": "Thuis",
+              "away": "Uit"
+            }
+          },
+          "venue": {
+            "name": "Accommodatie"
+          },
+          "matches": {
+            "name": "Wedstrijden vandaag"
+          }
+        }
+      }
+    },
+    "event": {
+      "match_update": {
+        "name": "Wedstrijdwijziging",
+        "state_attributes": {
+          "opponent": {
+            "name": "Tegenstander"
+          },
+          "home_away": {
+            "name": "Thuis of uit",
+            "state": {
+              "home": "Thuis",
+              "away": "Uit"
+            }
+          },
+          "home_team": {
+            "name": "Thuisteam"
+          },
+          "away_team": {
+            "name": "Uitteam"
+          },
+          "start": {
+            "name": "Aanvang"
+          },
+          "end": {
+            "name": "Einde (verwacht)"
+          },
+          "venue": {
+            "name": "Accommodatie"
+          },
+          "address": {
+            "name": "Adres"
+          },
+          "field": {
+            "name": "Veld"
+          },
+          "competition": {
+            "name": "Competitie"
+          },
+          "poule": {
+            "name": "Poule"
+          },
+          "remarks": {
+            "name": "Opmerkingen"
+          },
+          "status": {
+            "name": "Status",
+            "state": {
+              "scheduled": "Gepland",
+              "announced": "Aangekondigd",
+              "live": "Live",
+              "result": "Uitslag ingevoerd",
+              "final": "Definitief",
+              "discontinued": "Gestaakt",
+              "cancelled": "Afgelast",
+              "expired": "Verlopen",
+              "unknown": "Onbekend"
+            }
+          },
+          "match_id": {
+            "name": "Wedstrijd-ID"
+          },
+          "opponent_logo": {
+            "name": "Logo tegenstander"
+          },
+          "event_type": {
+            "state": {
+              "cancelled": "Afgelast",
+              "reinstated": "Gaat toch door",
+              "rescheduled": "Verplaatst",
+              "location_changed": "Andere accommodatie of ander veld",
+              "result": "Uitslag"
+            }
+          },
+          "meet_time": {
+            "name": "Verzameltijd"
+          },
+          "previous_start": {
+            "name": "Vorige aanvang"
+          },
+          "previous_venue": {
+            "name": "Vorige accommodatie"
+          },
+          "previous_field": {
+            "name": "Vorig veld"
+          },
+          "score": {
+            "name": "Uitslag"
+          },
+          "result": {
+            "name": "Uitslag",
+            "state": {
+              "win": "Gewonnen",
+              "draw": "Gelijkspel",
+              "loss": "Verloren"
+            }
+          }
+        }
+      }
+    }
+  },
+  "exceptions": {
+    "cannot_connect": {
+      "message": "Kon de wedstrijdgegevens van de KNHB niet bereiken: {error}"
+    },
+    "rate_limited": {
+      "message": "De wedstrijdgegevens van de KNHB vragen om rustiger aan te doen (limiet); later opnieuw."
+    },
+    "team_not_found": {
+      "message": "Het team staat niet meer bij de club. Verwijder het en voeg het opnieuw toe."
+    },
+    "unexpected_response": {
+      "message": "Onverwacht antwoord van de wedstrijdgegevens van de KNHB: {error}"
+    }
+  }
+}

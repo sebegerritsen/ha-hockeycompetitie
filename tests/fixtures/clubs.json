@@ -1,0 +1,28 @@
+{
+ "data": [
+  {
+   "federation_reference_id": "HV00AA1",
+   "name": "HC Voorbeeld",
+   "friendly_name": "Voorbeeld",
+   "city": "Voorbeeldstad",
+   "logo": "https://example.invalid/logo.png",
+   "type": "regular"
+  },
+  {
+   "federation_reference_id": "HV00BB2",
+   "name": "MHC De Proef",
+   "friendly_name": "De Proef",
+   "city": "Testdorp",
+   "logo": "https://example.invalid/logo.png",
+   "type": "regular"
+  },
+  {
+   "federation_reference_id": "HV00CC3",
+   "name": "HC Fictief",
+   "friendly_name": "Fictief",
+   "city": "Nergenshuizen",
+   "logo": "https://example.invalid/logo.png",
+   "type": "regular"
+  }
+ ]
+}

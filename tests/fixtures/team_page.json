@@ -1,0 +1,413 @@
+{
+ "data": {
+  "id": "abc",
+  "name": "Jongens O14 Test",
+  "poule_id": 5001,
+  "poule_name": "Poule A",
+  "season_id": 15,
+  "season_name": "2026-2027",
+  "period_id": 6,
+  "sport_type_name": "Veld",
+  "neighbors": [
+   {
+    "poule_id": 4001,
+    "season_id": 15,
+    "name": "Jongens O14 Voorcompetitie",
+    "poule_name": "Poule C"
+   },
+   {
+    "poule_id": 3001,
+    "season_id": 14,
+    "name": "Jongens O14 Test",
+    "poule_name": "Poule B"
+   }
+  ],
+  "poules": [
+   {
+    "id": 5001,
+    "name": "Poule A",
+    "competition": {
+     "id": 1,
+     "name": "Jongens O14 Test",
+     "period_name": "Herfst"
+    },
+    "standings": [
+     {
+      "rank": 1,
+      "played": 2,
+      "points": 6,
+      "wins": 2,
+      "draws": 0,
+      "losses": 0,
+      "goals_for": 7,
+      "goals_against": 1,
+      "penalties": 0,
+      "change": "equal",
+      "rank_change": 0,
+      "poule_id": 5001,
+      "team": {
+       "id": 2001,
+       "name": "De Proef JO14-1",
+       "short_name": "JO14-1",
+       "logo": "https://example.invalid/logo.png",
+       "federation_reference_id": "HV00BB2"
+      }
+     },
+     {
+      "rank": 2,
+      "played": 2,
+      "points": 4,
+      "wins": 1,
+      "draws": 1,
+      "losses": 0,
+      "goals_for": 5,
+      "goals_against": 3,
+      "penalties": 0,
+      "change": "equal",
+      "rank_change": 0,
+      "poule_id": 5001,
+      "team": {
+       "id": 1001,
+       "name": "Voorbeeld JO14-2",
+       "short_name": "JO14-2",
+       "logo": "https://example.invalid/logo.png",
+       "federation_reference_id": "HV00AA1"
+      }
+     },
+     {
+      "rank": 3,
+      "played": 2,
+      "points": 1,
+      "wins": 0,
+      "draws": 1,
+      "losses": 1,
+      "goals_for": 3,
+      "goals_against": 5,
+      "penalties": 0,
+      "change": "equal",
+      "rank_change": 0,
+      "poule_id": 5001,
+      "team": {
+       "id": 2002,
+       "name": "Fictief JO14-3",
+       "short_name": "JO14-3",
+       "logo": "https://example.invalid/logo.png",
+       "federation_reference_id": "HV00CC3"
+      }
+     },
+     {
+      "rank": 4,
+      "played": 2,
+      "points": 0,
+      "wins": 0,
+      "draws": 0,
+      "losses": 2,
+      "goals_for": 1,
+      "goals_against": 7,
+      "penalties": 0,
+      "change": "equal",
+      "rank_change": 0,
+      "poule_id": 5001,
+      "team": {
+       "id": 2003,
+       "name": "Proefstad JO14-1",
+       "short_name": "JO14-1",
+       "logo": "https://example.invalid/logo.png",
+       "federation_reference_id": "HV00DD4"
+      }
+     }
+    ],
+    "matches": [
+     {
+      "id": 9001,
+      "date": "2026-10-31T10:00:00+01:00",
+      "status": "final",
+      "cancellation_minute": null,
+      "home": {
+       "id": 1001,
+       "name": "Voorbeeld JO14-2",
+       "short_name": "JO14-2",
+       "logo": "https://example.invalid/logo.png",
+       "federation_reference_id": "HV00AA1"
+      },
+      "away": {
+       "id": 2001,
+       "name": "De Proef JO14-1",
+       "short_name": "JO14-1",
+       "logo": "https://example.invalid/logo.png",
+       "federation_reference_id": "HV00BB2"
+      },
+      "shootouts": {
+       "home": 0,
+       "away": 0
+      },
+      "score": {
+       "home": 3,
+       "away": 1
+      },
+      "location": {
+       "facility": {
+        "name": "Sportpark Voorbeeld",
+        "address": "Voorbeeldlaan 1\n1234AB Voorbeeldstad"
+       },
+       "field": {
+        "id": null,
+        "name": "Veld 1",
+        "type": "Waterveld"
+       }
+      },
+      "poule_name": "Jongens O14 Test - Poule A",
+      "poule_id": 5001,
+      "remarks": {
+       "official": "",
+       "info": null
+      },
+      "competition_name": "Jongens O14 Test",
+      "competition_season": "2026-2027",
+      "round": 1
+     },
+     {
+      "id": 9002,
+      "date": "2026-11-07T11:30:00+01:00",
+      "status": "final",
+      "cancellation_minute": null,
+      "home": {
+       "id": 2002,
+       "name": "Fictief JO14-3",
+       "short_name": "JO14-3",
+       "logo": "https://example.invalid/logo.png",
+       "federation_reference_id": "HV00CC3"
+      },
+      "away": {
+       "id": 1001,
+       "name": "Voorbeeld JO14-2",
+       "short_name": "JO14-2",
+       "logo": "https://example.invalid/logo.png",
+       "federation_reference_id": "HV00AA1"
+      },
+      "shootouts": {
+       "home": 3,
+       "away": 4
+      },
+      "score": {
+       "home": 2,
+       "away": 2
+      },
+      "location": {
+       "facility": {
+        "name": "Sportpark Voorbeeld",
+        "address": "Voorbeeldlaan 1\n1234AB Voorbeeldstad"
+       },
+       "field": {
+        "id": null,
+        "name": null,
+        "type": null
+       }
+      },
+      "poule_name": "Jongens O14 Test - Poule A",
+      "poule_id": 5001,
+      "remarks": {
+       "official": "",
+       "info": null
+      },
+      "competition_name": "Jongens O14 Test",
+      "competition_season": "2026-2027",
+      "round": 1
+     },
+     {
+      "id": 9003,
+      "date": "2026-11-14T12:00:00+01:00",
+      "status": "scheduled",
+      "cancellation_minute": null,
+      "home": {
+       "id": 1001,
+       "name": "Voorbeeld JO14-2",
+       "short_name": "JO14-2",
+       "logo": "https://example.invalid/logo.png",
+       "federation_reference_id": "HV00AA1"
+      },
+      "away": {
+       "id": 2002,
+       "name": "Fictief JO14-3",
+       "short_name": "JO14-3",
+       "logo": "https://example.invalid/logo.png",
+       "federation_reference_id": "HV00CC3"
+      },
+      "shootouts": {
+       "home": 0,
+       "away": 0
+      },
+      "score": {
+       "home": 0,
+       "away": 0
+      },
+      "location": {
+       "facility": {
+        "name": "Sportpark Voorbeeld",
+        "address": "Voorbeeldlaan 1\n1234AB Voorbeeldstad"
+       },
+       "field": {
+        "id": null,
+        "name": "Veld 2",
+        "type": "Kunstgras"
+       }
+      },
+      "poule_name": "Jongens O14 Test - Poule A",
+      "poule_id": 5001,
+      "remarks": {
+       "official": "Graag 30 minuten eerder aanwezig",
+       "info": null
+      },
+      "competition_name": "Jongens O14 Test",
+      "competition_season": "2026-2027",
+      "round": 1
+     },
+     {
+      "id": 9004,
+      "date": "2026-11-21T09:00:00+01:00",
+      "status": "cancelled",
+      "cancellation_minute": null,
+      "home": {
+       "id": 2001,
+       "name": "De Proef JO14-1",
+       "short_name": "JO14-1",
+       "logo": "https://example.invalid/logo.png",
+       "federation_reference_id": "HV00BB2"
+      },
+      "away": {
+       "id": 1001,
+       "name": "Voorbeeld JO14-2",
+       "short_name": "JO14-2",
+       "logo": "https://example.invalid/logo.png",
+       "federation_reference_id": "HV00AA1"
+      },
+      "shootouts": {
+       "home": 0,
+       "away": 0
+      },
+      "score": {
+       "home": 0,
+       "away": 0
+      },
+      "location": {
+       "facility": {
+        "name": "Sportpark Voorbeeld",
+        "address": "Voorbeeldlaan 1\n1234AB Voorbeeldstad"
+       },
+       "field": {
+        "id": null,
+        "name": null,
+        "type": null
+       }
+      },
+      "poule_name": "Jongens O14 Test - Poule A",
+      "poule_id": 5001,
+      "remarks": {
+       "official": "",
+       "info": null
+      },
+      "competition_name": "Jongens O14 Test",
+      "competition_season": "2026-2027",
+      "round": 1
+     },
+     {
+      "id": 9005,
+      "date": "2026-11-28T10:00:00+01:00",
+      "status": "scheduled",
+      "cancellation_minute": null,
+      "home": {
+       "id": 2003,
+       "name": "Proefstad JO14-1",
+       "short_name": "JO14-1",
+       "logo": "https://example.invalid/logo.png",
+       "federation_reference_id": "HV00DD4"
+      },
+      "away": {
+       "id": 1001,
+       "name": "Voorbeeld JO14-2",
+       "short_name": "JO14-2",
+       "logo": "https://example.invalid/logo.png",
+       "federation_reference_id": "HV00AA1"
+      },
+      "shootouts": {
+       "home": 0,
+       "away": 0
+      },
+      "score": {
+       "home": 0,
+       "away": 0
+      },
+      "location": {
+       "facility": {
+        "name": "Sportpark Voorbeeld",
+        "address": "Voorbeeldlaan 1\n1234AB Voorbeeldstad"
+       },
+       "field": {
+        "id": null,
+        "name": null,
+        "type": null
+       }
+      },
+      "poule_name": "Jongens O14 Test - Poule A",
+      "poule_id": 5001,
+      "remarks": {
+       "official": "",
+       "info": null
+      },
+      "competition_name": "Jongens O14 Test",
+      "competition_season": "2026-2027",
+      "round": 1
+     },
+     {
+      "id": 9006,
+      "date": "2026-11-14T13:30:00+01:00",
+      "status": "scheduled",
+      "cancellation_minute": null,
+      "home": {
+       "id": 2001,
+       "name": "De Proef JO14-1",
+       "short_name": "JO14-1",
+       "logo": "https://example.invalid/logo.png",
+       "federation_reference_id": "HV00BB2"
+      },
+      "away": {
+       "id": 2003,
+       "name": "Proefstad JO14-1",
+       "short_name": "JO14-1",
+       "logo": "https://example.invalid/logo.png",
+       "federation_reference_id": "HV00DD4"
+      },
+      "shootouts": {
+       "home": 0,
+       "away": 0
+      },
+      "score": {
+       "home": 0,
+       "away": 0
+      },
+      "location": {
+       "facility": {
+        "name": "Sportpark Voorbeeld",
+        "address": "Voorbeeldlaan 1\n1234AB Voorbeeldstad"
+       },
+       "field": {
+        "id": null,
+        "name": null,
+        "type": null
+       }
+      },
+      "poule_name": "Jongens O14 Test - Poule A",
+      "poule_id": 5001,
+      "remarks": {
+       "official": "",
+       "info": null
+      },
+      "competition_name": "Jongens O14 Test",
+      "competition_season": "2026-2027",
+      "round": 1
+     }
+    ]
+   }
+  ]
+ }
+}

@@ -1,0 +1,109 @@
+blueprint:
+  name: KNHB Hockey – notify on match changes
+  description: >-
+    Sends a notification to a phone when one of the team's matches is cancelled,
+    back on, moved to another time, venue or pitch, or has a result.
+    Uses the team's *Match update* entity of the KNHB Hockey integration.
+  domain: automation
+  source_url: https://github.com/sebegerritsen/ha-knhb-hockey/blob/main/blueprints/automation/knhb_hockey/match_update_notify.yaml
+  input:
+    update_entity:
+      name: Match update entity
+      description: The team's *Match update* entity (event).
+      selector:
+        entity:
+          filter:
+            - integration: knhb_hockey
+              domain: event
+    notify_device:
+      name: Phone
+      description: The phone (Home Assistant app) to notify.
+      selector:
+        device:
+          filter:
+            - integration: mobile_app
+    event_types:
+      name: Changes to notify about
+      default: [cancelled, reinstated, rescheduled, location_changed, result]
+      selector:
+        select:
+          multiple: true
+          options:
+            - label: Cancelled
+              value: cancelled
+            - label: Back on (after a cancellation)
+              value: reinstated
+            - label: Rescheduled (other time)
+              value: rescheduled
+            - label: Other venue or pitch
+              value: location_changed
+            - label: Result
+              value: result
+    language:
+      name: Language of the notification
+      default: nl
+      selector:
+        select:
+          options:
+            - label: Nederlands
+              value: nl
+            - label: English
+              value: en
+
+mode: queued
+max: 10
+
+triggers:
+  - trigger: state
+    entity_id: !input update_entity
+
+variables:
+  event_types: !input event_types
+  lang: !input language
+  a: "{{ trigger.to_state.attributes if trigger.to_state else {} }}"
+  type: "{{ a.event_type | default('') }}"
+  days: >-
+    {{ ['ma', 'di', 'wo', 'do', 'vr', 'za', 'zo'] if lang == 'nl'
+       else ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'] }}
+  start: >-
+    {% set d = as_local(as_datetime(a.start)) if a.start else none %}
+    {{ days[d.weekday()] ~ ' ' ~ d.strftime('%d-%m %H:%M') if d else '' }}
+  previous_start: >-
+    {% set d = as_local(as_datetime(a.previous_start)) if a.previous_start else none %}
+    {{ days[d.weekday()] ~ ' ' ~ d.strftime('%d-%m %H:%M') if d else '' }}
+  teams: "{{ a.home_team | default('') }} – {{ a.away_team | default('') }}"
+  place: "{{ [a.venue, a.field] | select | join(', ') }}"
+  previous_place: "{{ [a.previous_venue, a.previous_field] | select | join(', ') }}"
+  labels: >-
+    {{ {'cancelled': 'Afgelast', 'reinstated': 'Gaat toch door', 'rescheduled': 'Verplaatst',
+        'location_changed': 'Andere locatie', 'result': 'Uitslag',
+        'win': 'gewonnen', 'draw': 'gelijkgespeeld', 'loss': 'verloren'} if lang == 'nl'
+       else {'cancelled': 'Cancelled', 'reinstated': 'Back on', 'rescheduled': 'Rescheduled',
+        'location_changed': 'Other venue or pitch', 'result': 'Result',
+        'win': 'won', 'draw': 'drawn', 'loss': 'lost'} }}
+  title: >-
+    {% if type == 'result' %}{{ a.home_team }} {{ a.score }} {{ a.away_team }}
+    {% else %}{{ labels[type] | default(type) }}: {{ teams }}{% endif %}
+  message: >-
+    {% if type == 'cancelled' %}{{ start }}{{ ' · ' ~ a.venue if a.venue else '' }}
+    {% elif type == 'reinstated' %}{{ start }} · {{ place }}
+    {% elif type == 'rescheduled' %}{{ start }} (was {{ previous_start }}) · {{ place }}
+    {% elif type == 'location_changed' %}{{ place }} (was {{ previous_place }}) · {{ start }}
+    {% elif type == 'result' %}{{ labels[a.result] | default('') | capitalize }} · {{ a.competition | default('') }}
+    {% endif %}
+
+conditions:
+  - condition: template
+    value_template: >-
+      {{ trigger.from_state is not none
+         and trigger.from_state.state != 'unavailable'
+         and trigger.to_state is not none
+         and trigger.to_state.state not in ['unknown', 'unavailable']
+         and type in event_types }}
+
+actions:
+  - device_id: !input notify_device
+    domain: mobile_app
+    type: notify
+    title: "{{ title | trim }}"
+    message: "{{ message | trim }}"

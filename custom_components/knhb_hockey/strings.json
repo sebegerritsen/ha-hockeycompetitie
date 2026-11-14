@@ -1,0 +1,624 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Find your club",
+        "description": "Data comes from the KNHB match centre on hockey.nl. No account is needed.",
+        "data": {
+          "query": "Club name or town"
+        },
+        "data_description": {
+          "query": "For example a part of the club's name, or the town it plays in."
+        }
+      },
+      "club": {
+        "title": "Pick the club",
+        "data": {
+          "club_id": "Club"
+        }
+      },
+      "team": {
+        "title": "Pick the team",
+        "description": "Teams of {club}. Add each team you want to follow separately, for example a field and an indoor team.",
+        "data": {
+          "team_id": "Team"
+        },
+        "data_description": {
+          "team_id": "Field (Veld) or indoor (Zaal), and the age group."
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Could not reach the KNHB match data. Try again later.",
+      "rate_limited": "The KNHB match data is busy (too many requests from this network). Wait a minute and try again.",
+      "no_clubs_found": "No club found. Try a shorter part of the name, or the town."
+    },
+    "abort": {
+      "already_configured": "This team is already set up.",
+      "no_teams": "{club} has no teams with a competition at the moment."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Meet time",
+        "description": "When the team meets before kick-off. Used for the meet time sensor and in change alerts.",
+        "data": {
+          "meet_minutes_home": "Home matches (minutes before kick-off)",
+          "meet_minutes_away": "Away matches (minutes before kick-off)"
+        },
+        "data_description": {
+          "meet_minutes_home": "For example 30: meet at 11:30 for a 12:00 match.",
+          "meet_minutes_away": "Travel time is not included: this is when you need to be at the venue."
+        }
+      }
+    }
+  },
+  "entity": {
+    "calendar": {
+      "matches": {
+        "name": "Matches"
+      }
+    },
+    "sensor": {
+      "next_match": {
+        "name": "Next match",
+        "state_attributes": {
+          "opponent": {
+            "name": "Opponent"
+          },
+          "home_away": {
+            "name": "Home or away",
+            "state": {
+              "home": "Home",
+              "away": "Away"
+            }
+          },
+          "home_team": {
+            "name": "Home team"
+          },
+          "away_team": {
+            "name": "Away team"
+          },
+          "start": {
+            "name": "Start"
+          },
+          "end": {
+            "name": "End (expected)"
+          },
+          "venue": {
+            "name": "Venue"
+          },
+          "address": {
+            "name": "Address"
+          },
+          "field": {
+            "name": "Pitch"
+          },
+          "competition": {
+            "name": "Competition"
+          },
+          "poule": {
+            "name": "Pool"
+          },
+          "remarks": {
+            "name": "Remarks"
+          },
+          "status": {
+            "name": "Status",
+            "state": {
+              "scheduled": "Scheduled",
+              "announced": "Announced",
+              "live": "Live",
+              "result": "Result entered",
+              "final": "Final",
+              "discontinued": "Discontinued",
+              "cancelled": "Cancelled",
+              "expired": "Expired",
+              "unknown": "Unknown"
+            }
+          },
+          "match_id": {
+            "name": "Match ID"
+          },
+          "opponent_logo": {
+            "name": "Opponent logo"
+          },
+          "meet_time": {
+            "name": "Meet time"
+          },
+          "opponent_rank": {
+            "name": "Opponent's rank"
+          },
+          "opponent_points": {
+            "name": "Opponent's points"
+          },
+          "opponent_form": {
+            "name": "Opponent's form"
+          },
+          "previous_meeting": {
+            "name": "Previous meeting"
+          },
+          "previous_meeting_result": {
+            "name": "Previous meeting result",
+            "state": {
+              "win": "Win",
+              "draw": "Draw",
+              "loss": "Loss"
+            }
+          },
+          "upcoming": {
+            "name": "Upcoming matches"
+          }
+        }
+      },
+      "opponent": {
+        "name": "Next opponent",
+        "state_attributes": {
+          "home_away": {
+            "name": "Home or away",
+            "state": {
+              "home": "Home",
+              "away": "Away"
+            }
+          },
+          "start": {
+            "name": "Start"
+          },
+          "venue": {
+            "name": "Venue"
+          },
+          "opponent_rank": {
+            "name": "Opponent's rank"
+          },
+          "opponent_points": {
+            "name": "Opponent's points"
+          },
+          "opponent_form": {
+            "name": "Opponent's form"
+          }
+        }
+      },
+      "home_away": {
+        "name": "Home or away",
+        "state": {
+          "home": "Home",
+          "away": "Away"
+        },
+        "state_attributes": {
+          "opponent": {
+            "name": "Opponent"
+          },
+          "home_away": {
+            "name": "Home or away",
+            "state": {
+              "home": "Home",
+              "away": "Away"
+            }
+          },
+          "home_team": {
+            "name": "Home team"
+          },
+          "away_team": {
+            "name": "Away team"
+          },
+          "start": {
+            "name": "Start"
+          },
+          "end": {
+            "name": "End (expected)"
+          },
+          "venue": {
+            "name": "Venue"
+          },
+          "address": {
+            "name": "Address"
+          },
+          "field": {
+            "name": "Pitch"
+          },
+          "competition": {
+            "name": "Competition"
+          },
+          "poule": {
+            "name": "Pool"
+          },
+          "remarks": {
+            "name": "Remarks"
+          },
+          "status": {
+            "name": "Status",
+            "state": {
+              "scheduled": "Scheduled",
+              "announced": "Announced",
+              "live": "Live",
+              "result": "Result entered",
+              "final": "Final",
+              "discontinued": "Discontinued",
+              "cancelled": "Cancelled",
+              "expired": "Expired",
+              "unknown": "Unknown"
+            }
+          },
+          "match_id": {
+            "name": "Match ID"
+          },
+          "opponent_logo": {
+            "name": "Opponent logo"
+          }
+        }
+      },
+      "last_result": {
+        "name": "Last result",
+        "state": {
+          "win": "Win",
+          "draw": "Draw",
+          "loss": "Loss"
+        },
+        "state_attributes": {
+          "opponent": {
+            "name": "Opponent"
+          },
+          "home_away": {
+            "name": "Home or away",
+            "state": {
+              "home": "Home",
+              "away": "Away"
+            }
+          },
+          "home_team": {
+            "name": "Home team"
+          },
+          "away_team": {
+            "name": "Away team"
+          },
+          "start": {
+            "name": "Start"
+          },
+          "end": {
+            "name": "End (expected)"
+          },
+          "venue": {
+            "name": "Venue"
+          },
+          "address": {
+            "name": "Address"
+          },
+          "field": {
+            "name": "Pitch"
+          },
+          "competition": {
+            "name": "Competition"
+          },
+          "poule": {
+            "name": "Pool"
+          },
+          "remarks": {
+            "name": "Remarks"
+          },
+          "status": {
+            "name": "Status",
+            "state": {
+              "scheduled": "Scheduled",
+              "announced": "Announced",
+              "live": "Live",
+              "result": "Result entered",
+              "final": "Final",
+              "discontinued": "Discontinued",
+              "cancelled": "Cancelled",
+              "expired": "Expired",
+              "unknown": "Unknown"
+            }
+          },
+          "match_id": {
+            "name": "Match ID"
+          },
+          "opponent_logo": {
+            "name": "Opponent logo"
+          },
+          "score": {
+            "name": "Score"
+          },
+          "goals_for": {
+            "name": "Goals for"
+          },
+          "goals_against": {
+            "name": "Goals against"
+          }
+        }
+      },
+      "standing": {
+        "name": "Standing",
+        "state_attributes": {
+          "points": {
+            "name": "Points"
+          },
+          "played": {
+            "name": "Played"
+          },
+          "wins": {
+            "name": "Won"
+          },
+          "draws": {
+            "name": "Drawn"
+          },
+          "losses": {
+            "name": "Lost"
+          },
+          "goals_for": {
+            "name": "Goals for"
+          },
+          "goals_against": {
+            "name": "Goals against"
+          },
+          "goal_difference": {
+            "name": "Goal difference"
+          },
+          "rank_change": {
+            "name": "Rank change"
+          },
+          "teams": {
+            "name": "Teams in pool"
+          },
+          "competition": {
+            "name": "Competition"
+          },
+          "poule": {
+            "name": "Pool"
+          },
+          "table": {
+            "name": "Table"
+          },
+          "form": {
+            "name": "Form"
+          }
+        }
+      },
+      "meet_time": {
+        "name": "Meet time",
+        "state_attributes": {
+          "opponent": {
+            "name": "Opponent"
+          },
+          "home_away": {
+            "name": "Home or away",
+            "state": {
+              "home": "Home",
+              "away": "Away"
+            }
+          },
+          "home_team": {
+            "name": "Home team"
+          },
+          "away_team": {
+            "name": "Away team"
+          },
+          "start": {
+            "name": "Start"
+          },
+          "end": {
+            "name": "End (expected)"
+          },
+          "venue": {
+            "name": "Venue"
+          },
+          "address": {
+            "name": "Address"
+          },
+          "field": {
+            "name": "Pitch"
+          },
+          "competition": {
+            "name": "Competition"
+          },
+          "poule": {
+            "name": "Pool"
+          },
+          "remarks": {
+            "name": "Remarks"
+          },
+          "status": {
+            "name": "Status",
+            "state": {
+              "scheduled": "Scheduled",
+              "announced": "Announced",
+              "live": "Live",
+              "result": "Result entered",
+              "final": "Final",
+              "discontinued": "Discontinued",
+              "cancelled": "Cancelled",
+              "expired": "Expired",
+              "unknown": "Unknown"
+            }
+          },
+          "match_id": {
+            "name": "Match ID"
+          },
+          "opponent_logo": {
+            "name": "Opponent logo"
+          }
+        }
+      },
+      "match_weather": {
+        "name": "Weather at next match",
+        "state_attributes": {
+          "condition": {
+            "name": "Condition"
+          },
+          "apparent_temperature": {
+            "name": "Feels like"
+          },
+          "precipitation_type": {
+            "name": "Precipitation type"
+          },
+          "precipitation_probability": {
+            "name": "Chance of precipitation"
+          },
+          "precipitation": {
+            "name": "Precipitation"
+          },
+          "humidity": {
+            "name": "Humidity"
+          },
+          "rating": {
+            "name": "Rating"
+          },
+          "grade": {
+            "name": "Grade"
+          },
+          "description": {
+            "name": "Forecast"
+          },
+          "match_id": {
+            "name": "Match ID"
+          },
+          "start": {
+            "name": "Start"
+          }
+        }
+      }
+    },
+    "binary_sensor": {
+      "match_today": {
+        "name": "Match today",
+        "state_attributes": {
+          "start": {
+            "name": "Start"
+          },
+          "meet_time": {
+            "name": "Meet time"
+          },
+          "opponent": {
+            "name": "Opponent"
+          },
+          "home_away": {
+            "name": "Home or away",
+            "state": {
+              "home": "Home",
+              "away": "Away"
+            }
+          },
+          "venue": {
+            "name": "Venue"
+          },
+          "matches": {
+            "name": "Matches today"
+          }
+        }
+      }
+    },
+    "event": {
+      "match_update": {
+        "name": "Match update",
+        "state_attributes": {
+          "opponent": {
+            "name": "Opponent"
+          },
+          "home_away": {
+            "name": "Home or away",
+            "state": {
+              "home": "Home",
+              "away": "Away"
+            }
+          },
+          "home_team": {
+            "name": "Home team"
+          },
+          "away_team": {
+            "name": "Away team"
+          },
+          "start": {
+            "name": "Start"
+          },
+          "end": {
+            "name": "End (expected)"
+          },
+          "venue": {
+            "name": "Venue"
+          },
+          "address": {
+            "name": "Address"
+          },
+          "field": {
+            "name": "Pitch"
+          },
+          "competition": {
+            "name": "Competition"
+          },
+          "poule": {
+            "name": "Pool"
+          },
+          "remarks": {
+            "name": "Remarks"
+          },
+          "status": {
+            "name": "Status",
+            "state": {
+              "scheduled": "Scheduled",
+              "announced": "Announced",
+              "live": "Live",
+              "result": "Result entered",
+              "final": "Final",
+              "discontinued": "Discontinued",
+              "cancelled": "Cancelled",
+              "expired": "Expired",
+              "unknown": "Unknown"
+            }
+          },
+          "match_id": {
+            "name": "Match ID"
+          },
+          "opponent_logo": {
+            "name": "Opponent logo"
+          },
+          "event_type": {
+            "state": {
+              "cancelled": "Cancelled",
+              "reinstated": "Back on",
+              "rescheduled": "Rescheduled",
+              "location_changed": "Venue or pitch changed",
+              "result": "Result"
+            }
+          },
+          "meet_time": {
+            "name": "Meet time"
+          },
+          "previous_start": {
+            "name": "Previous start"
+          },
+          "previous_venue": {
+            "name": "Previous venue"
+          },
+          "previous_field": {
+            "name": "Previous pitch"
+          },
+          "score": {
+            "name": "Score"
+          },
+          "result": {
+            "name": "Result",
+            "state": {
+              "win": "Win",
+              "draw": "Draw",
+              "loss": "Loss"
+            }
+          }
+        }
+      }
+    }
+  },
+  "exceptions": {
+    "cannot_connect": {
+      "message": "Could not reach the KNHB match data: {error}"
+    },
+    "rate_limited": {
+      "message": "The KNHB match data asked to slow down (rate limit); trying again later."
+    },
+    "team_not_found": {
+      "message": "The team is no longer listed by its club. Remove it and add it again."
+    },
+    "unexpected_response": {
+      "message": "Unexpected answer from the KNHB match data: {error}"
+    }
+  }
+}

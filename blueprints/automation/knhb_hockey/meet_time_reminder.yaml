@@ -1,0 +1,88 @@
+blueprint:
+  name: KNHB Hockey – reminder before meet time
+  description: >-
+    Reminds you a set time before the team meets for a match (the integration's
+    *Meet time* sensor), with the venue, pitch and the weather forecast.
+    Add travel time to the lead time: the meet time is when you need to be there.
+  domain: automation
+  source_url: https://github.com/sebegerritsen/ha-knhb-hockey/blob/main/blueprints/automation/knhb_hockey/meet_time_reminder.yaml
+  input:
+    meet_time_entity:
+      name: Meet time sensor
+      description: The team's *Meet time* sensor.
+      selector:
+        entity:
+          filter:
+            - integration: knhb_hockey
+              domain: sensor
+              device_class: timestamp
+    notify_device:
+      name: Phone
+      selector:
+        device:
+          filter:
+            - integration: mobile_app
+    lead_time:
+      name: How long before the meet time
+      default: 60
+      selector:
+        number:
+          min: 0
+          max: 300
+          step: 5
+          unit_of_measurement: min
+    language:
+      name: Language of the notification
+      default: nl
+      selector:
+        select:
+          options:
+            - label: Nederlands
+              value: nl
+            - label: English
+              value: en
+
+mode: single
+
+trigger_variables:
+  meet_entity: !input meet_time_entity
+  lead: !input lead_time
+
+triggers:
+  - trigger: template
+    value_template: >-
+      {% set meet = as_datetime(states(meet_entity)) %}
+      {{ meet is not none
+         and now() >= meet - timedelta(minutes=lead | int)
+         and now() < meet }}
+
+variables:
+  lang: !input language
+
+actions:
+  - variables:
+      a: "{{ states[meet_entity].attributes }}"
+      meet_at: "{{ as_local(as_datetime(states(meet_entity))).strftime('%H:%M') }}"
+      kickoff_at: "{{ as_local(as_datetime(a.start)).strftime('%H:%M') if a.start else '?' }}"
+      weather_entity: >-
+        {% set ns = namespace(found='') %}
+        {% for e in device_entities(device_id(meet_entity)) %}
+          {% if state_attr(e, 'precipitation_probability') is not none %}{% set ns.found = e %}{% endif %}
+        {% endfor %}
+        {{ ns.found }}
+      weather: >-
+        {% if weather_entity and states(weather_entity) not in ['unknown', 'unavailable'] %}
+          {{- states(weather_entity) | float | round(0) | int }} °C, {{ state_attr(weather_entity, 'precipitation_probability') | int(0) }}%
+          {{- ' kans op neerslag' if lang == 'nl' else ' chance of rain' }}
+        {%- endif %}
+      place: "{{ [a.venue, a.field] | select | join(', ') }}"
+  - device_id: !input notify_device
+    domain: mobile_app
+    type: notify
+    title: >-
+      {{ 'Verzamelen' if lang == 'nl' else 'Meet at' }} {{ meet_at }}:
+      {{ a.home_team }} – {{ a.away_team }}
+    message: >-
+      {{ 'Aanvang' if lang == 'nl' else 'Kick-off' }} {{ kickoff_at }} · {{ place }}
+      {%- if a.address %} ({{ a.address }}){% endif %}
+      {%- if weather %} · {{ weather }}{% endif %}

@@ -1,0 +1,63 @@
+{
+ "data": {
+  "federation_reference_id": "HV00AA1",
+  "name": "HC Voorbeeld",
+  "friendly_name": "Voorbeeld",
+  "city": "Voorbeeldstad",
+  "logo": "https://example.invalid/logo.png",
+  "type": "regular",
+  "address": "Voorbeeldlaan 1",
+  "teams": [
+   {
+    "id": 1004,
+    "name": "Voorbeeld D1",
+    "short_name": "D1",
+    "logo": "https://example.invalid/logo.png",
+    "hockey_type": "VE",
+    "category_group_name": "Senioren",
+    "federation_reference_id": "HV00AA1",
+    "recent_poule_id": 5004
+   },
+   {
+    "id": 1003,
+    "name": "Voorbeeld zJO14-2",
+    "short_name": "zJO14-2",
+    "logo": "https://example.invalid/logo.png",
+    "hockey_type": "ZA",
+    "category_group_name": "Junioren",
+    "federation_reference_id": "HV00AA1",
+    "recent_poule_id": 5003
+   },
+   {
+    "id": 1002,
+    "name": "Voorbeeld MO10-1",
+    "short_name": "MO10-1",
+    "logo": "https://example.invalid/logo.png",
+    "hockey_type": "VE",
+    "category_group_name": "Jongste jeugd",
+    "federation_reference_id": "HV00AA1",
+    "recent_poule_id": 5002
+   },
+   {
+    "id": 1001,
+    "name": "Voorbeeld JO14-2",
+    "short_name": "JO14-2",
+    "logo": "https://example.invalid/logo.png",
+    "hockey_type": "VE",
+    "category_group_name": "Junioren",
+    "federation_reference_id": "HV00AA1",
+    "recent_poule_id": 5001
+   },
+   {
+    "id": 1005,
+    "name": "Voorbeeld JO8-1",
+    "short_name": "JO8-1",
+    "logo": "https://example.invalid/logo.png",
+    "hockey_type": "VE",
+    "category_group_name": "Jongste jeugd",
+    "federation_reference_id": "HV00AA1",
+    "recent_poule_id": null
+   }
+  ]
+ }
+}

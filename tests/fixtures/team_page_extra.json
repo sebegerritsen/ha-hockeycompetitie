@@ -1,0 +1,69 @@
+{
+ "data": {
+  "id": "def",
+  "name": "Jongens O14 Voorcompetitie",
+  "poule_id": 4001,
+  "season_id": 15,
+  "neighbors": [],
+  "poules": [
+   {
+    "id": 4001,
+    "name": "Poule C",
+    "competition": {
+     "name": "Jongens O14 Voorcompetitie"
+    },
+    "standings": [],
+    "matches": [
+     {
+      "id": 8001,
+      "date": "2026-09-19T10:00:00+02:00",
+      "status": "final",
+      "cancellation_minute": null,
+      "home": {
+       "id": 1001,
+       "name": "Voorbeeld JO14-2",
+       "short_name": "JO14-2",
+       "logo": "https://example.invalid/logo.png",
+       "federation_reference_id": "HV00AA1"
+      },
+      "away": {
+       "id": 2009,
+       "name": "Nergenshuizen JO14-2",
+       "short_name": "JO14-2",
+       "logo": "https://example.invalid/logo.png",
+       "federation_reference_id": "HV00EE5"
+      },
+      "shootouts": {
+       "home": 0,
+       "away": 0
+      },
+      "score": {
+       "home": 5,
+       "away": 0
+      },
+      "location": {
+       "facility": {
+        "name": "Sportpark Voorbeeld",
+        "address": "Voorbeeldlaan 1\n1234AB Voorbeeldstad"
+       },
+       "field": {
+        "id": null,
+        "name": null,
+        "type": null
+       }
+      },
+      "poule_name": "Voorcompetitie - Poule C",
+      "poule_id": 4001,
+      "remarks": {
+       "official": "",
+       "info": null
+      },
+      "competition_name": "Jongens O14 Test",
+      "competition_season": "2026-2027",
+      "round": 1
+     }
+    ]
+   }
+  ]
+ }
+}

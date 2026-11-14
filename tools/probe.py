@@ -8,6 +8,7 @@
 Prints the JSON response. The device UUID and token are kept in ~/.cache/knhb-hockey-probe.json
 so repeated runs reuse one registration. See docs/api.md.
 """
+
 from __future__ import annotations
 
 import hashlib
@@ -48,19 +49,33 @@ class Probe:
             self.uuid, self.token = str(uuid.uuid4()), None
 
     def _request(self, method: str, path: str, body: dict | None = None, signed: bool = True):
-        headers = {"Accept": "application/json", "Content-Type": "application/json",
-                   "X-Requested-With": "XMLHttpRequest", "User-Agent": "knhb-hockey-probe"}
+        headers = {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+            "X-Requested-With": "XMLHttpRequest",
+            "User-Agent": "knhb-hockey-probe",
+        }
         if signed:
             ts = str(int(time.time()))
-            headers |= {"X-HAPI-Authorization": self.token or "", "X-HAPI-Timestamp": ts,
-                        "X-HAPI-Signature": signature(ts, path, self.uuid), "X-HAPI-Version": API_VERSION}
-        req = urllib.request.Request(BASE_URL + path, method=method, headers=headers,
-                                     data=json.dumps(body).encode() if body else None)
+            headers |= {
+                "X-HAPI-Authorization": self.token or "",
+                "X-HAPI-Timestamp": ts,
+                "X-HAPI-Signature": signature(ts, path, self.uuid),
+                "X-HAPI-Version": API_VERSION,
+            }
+        req = urllib.request.Request(
+            BASE_URL + path,
+            method=method,
+            headers=headers,
+            data=json.dumps(body).encode() if body else None,
+        )
         with urllib.request.urlopen(req, timeout=30) as resp:
             return json.load(resp)
 
     def register(self) -> None:
-        self.token = self._request("POST", "/device/register", {"uuid": self.uuid, "os": "Web"}, signed=False)["token"]
+        self.token = self._request(
+            "POST", "/device/register", {"uuid": self.uuid, "os": "Web"}, signed=False
+        )["token"]
         os.makedirs(os.path.dirname(STATE), exist_ok=True)
         with open(STATE, "w") as f:
             json.dump({"uuid": self.uuid, "token": self.token}, f)

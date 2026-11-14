@@ -1,0 +1,65 @@
+{
+  "entity": {
+    "calendar": {
+      "matches": {
+        "default": "mdi:hockey-sticks"
+      }
+    },
+    "sensor": {
+      "next_match": {
+        "default": "mdi:hockey-sticks"
+      },
+      "opponent": {
+        "default": "mdi:account-group"
+      },
+      "home_away": {
+        "default": "mdi:map-marker",
+        "state": {
+          "home": "mdi:home",
+          "away": "mdi:car"
+        }
+      },
+      "last_result": {
+        "default": "mdi:scoreboard",
+        "state": {
+          "win": "mdi:trophy",
+          "draw": "mdi:scale-balance",
+          "loss": "mdi:emoticon-sad-outline"
+        }
+      },
+      "standing": {
+        "default": "mdi:podium"
+      },
+      "meet_time": {
+        "default": "mdi:account-group"
+      },
+      "match_weather": {
+        "default": "mdi:weather-partly-cloudy"
+      }
+    },
+    "binary_sensor": {
+      "match_today": {
+        "default": "mdi:calendar-blank",
+        "state": {
+          "on": "mdi:hockey-sticks"
+        }
+      }
+    },
+    "event": {
+      "match_update": {
+        "default": "mdi:bell-ring",
+        "state_attributes": {
+          "event_type": {
+            "state": {
+              "cancelled": "mdi:cancel",
+              "reinstated": "mdi:check-circle",
+              "rescheduled": "mdi:calendar-clock",
+              "location_changed": "mdi:map-marker-radius",
+              "result": "mdi:scoreboard"
+            }
+          }
+        }
+      }
+    }
+  }
+}

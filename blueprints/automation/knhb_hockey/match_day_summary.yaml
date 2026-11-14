@@ -1,0 +1,84 @@
+blueprint:
+  name: KNHB Hockey – match day summary
+  description: >-
+    On match days, sends a short summary at a set time: opponent, kick-off, meet time,
+    venue and the weather forecast. Uses the team's *Match today* entity.
+  domain: automation
+  source_url: https://github.com/sebegerritsen/ha-knhb-hockey/blob/main/blueprints/automation/knhb_hockey/match_day_summary.yaml
+  input:
+    match_today_entity:
+      name: Match today
+      description: The team's *Match today* entity (binary sensor).
+      selector:
+        entity:
+          filter:
+            - integration: knhb_hockey
+              domain: binary_sensor
+    notify_device:
+      name: Phone
+      selector:
+        device:
+          filter:
+            - integration: mobile_app
+    time:
+      name: Time
+      default: "08:00:00"
+      selector:
+        time: {}
+    language:
+      name: Language of the notification
+      default: nl
+      selector:
+        select:
+          options:
+            - label: Nederlands
+              value: nl
+            - label: English
+              value: en
+
+mode: single
+
+variables:
+  today_entity: !input match_today_entity
+  lang: !input language
+
+triggers:
+  - trigger: time
+    at: !input time
+
+conditions:
+  - condition: state
+    entity_id: !input match_today_entity
+    state: "on"
+
+actions:
+  - variables:
+      a: "{{ states[today_entity].attributes }}"
+      team: >-
+        {{ device_attr(device_id(today_entity), 'name_by_user')
+           or device_attr(device_id(today_entity), 'name') }}
+      kickoff_at: "{{ as_local(as_datetime(a.start)).strftime('%H:%M') if a.start else '?' }}"
+      meet_at: "{{ as_local(as_datetime(a.meet_time)).strftime('%H:%M') if a.meet_time else '' }}"
+      weather_entity: >-
+        {% set ns = namespace(found='') %}
+        {% for e in device_entities(device_id(today_entity)) %}
+          {% if state_attr(e, 'precipitation_probability') is not none %}{% set ns.found = e %}{% endif %}
+        {% endfor %}
+        {{ ns.found }}
+      weather: >-
+        {% if weather_entity and states(weather_entity) not in ['unknown', 'unavailable'] %}
+          {{- states(weather_entity) | float | round(0) | int }} °C, {{ state_attr(weather_entity, 'precipitation_probability') | int(0) }}%
+          {{- ' kans op neerslag' if lang == 'nl' else ' chance of rain' }}
+        {%- endif %}
+      home_away: >-
+        {{ ('thuis' if a.home_away == 'home' else 'uit') if lang == 'nl' else a.home_away }}
+  - device_id: !input notify_device
+    domain: mobile_app
+    type: notify
+    title: "{{ 'Vandaag hockey' if lang == 'nl' else 'Hockey today' }}: {{ team }}"
+    message: >-
+      {{ a.opponent }} ({{ home_away }}) ·
+      {{ 'aanvang' if lang == 'nl' else 'kick-off' }} {{ kickoff_at }}
+      {%- if meet_at %}, {{ 'verzamelen' if lang == 'nl' else 'meet' }} {{ meet_at }}{% endif %}
+      {%- if a.venue %} · {{ a.venue }}{% endif %}
+      {%- if weather %} · {{ weather }}{% endif %}
