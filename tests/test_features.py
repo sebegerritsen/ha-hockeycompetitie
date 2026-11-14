@@ -254,6 +254,7 @@ async def test_opponent_and_form(
     await _setup(hass, config_entry)
     state = hass.states.get(NEXT_MATCH)
     assert state.attributes["entity_picture"] == "https://example.invalid/logo.png"
+    assert state.attributes["home_logo"] == "https://example.invalid/logo.png"
     assert state.attributes["opponent_rank"] == 3
     assert state.attributes["opponent_points"] == 1
     assert state.attributes["opponent_form"] == ["draw"]

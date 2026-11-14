@@ -149,6 +149,12 @@
           },
           "upcoming": {
             "name": "Komende wedstrijden"
+          },
+          "home_logo": {
+            "name": "Logo thuisteam"
+          },
+          "away_logo": {
+            "name": "Logo uitteam"
           }
         }
       },
@@ -245,6 +251,12 @@
           },
           "opponent_logo": {
             "name": "Logo tegenstander"
+          },
+          "home_logo": {
+            "name": "Logo thuisteam"
+          },
+          "away_logo": {
+            "name": "Logo uitteam"
           }
         }
       },
@@ -324,6 +336,12 @@
           },
           "goals_against": {
             "name": "Doelpunten tegen"
+          },
+          "home_logo": {
+            "name": "Logo thuisteam"
+          },
+          "away_logo": {
+            "name": "Logo uitteam"
           }
         }
       },
@@ -436,6 +454,12 @@
           },
           "opponent_logo": {
             "name": "Logo tegenstander"
+          },
+          "home_logo": {
+            "name": "Logo thuisteam"
+          },
+          "away_logo": {
+            "name": "Logo uitteam"
           }
         }
       },

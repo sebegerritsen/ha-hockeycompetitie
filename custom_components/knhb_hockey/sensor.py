@@ -60,6 +60,8 @@ def match_attributes(coordinator: KnhbCoordinator, match: Match | None) -> dict[
         "status": match.status.value,
         "match_id": match.id,
         "opponent_logo": opponent.logo,
+        "home_logo": match.home.logo,
+        "away_logo": match.away.logo,
     }
 
 
@@ -288,7 +290,17 @@ class KnhbSensor(KnhbEntity, SensorEntity):
 
     entity_description: KnhbSensorDescription
     _unrecorded_attributes = frozenset(
-        {"table", "upcoming", "opponent_logo", "remarks", "description", "opponent_form", "form"}
+        {
+            "table",
+            "upcoming",
+            "opponent_logo",
+            "home_logo",
+            "away_logo",
+            "remarks",
+            "description",
+            "opponent_form",
+            "form",
+        }
     )
 
     def __init__(self, coordinator: KnhbCoordinator, description: KnhbSensorDescription) -> None:

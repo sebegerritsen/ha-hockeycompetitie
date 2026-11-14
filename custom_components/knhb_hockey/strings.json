@@ -149,6 +149,12 @@
           },
           "upcoming": {
             "name": "Upcoming matches"
+          },
+          "home_logo": {
+            "name": "Home team logo"
+          },
+          "away_logo": {
+            "name": "Away team logo"
           }
         }
       },
@@ -245,6 +251,12 @@
           },
           "opponent_logo": {
             "name": "Opponent logo"
+          },
+          "home_logo": {
+            "name": "Home team logo"
+          },
+          "away_logo": {
+            "name": "Away team logo"
           }
         }
       },
@@ -324,6 +336,12 @@
           },
           "goals_against": {
             "name": "Goals against"
+          },
+          "home_logo": {
+            "name": "Home team logo"
+          },
+          "away_logo": {
+            "name": "Away team logo"
           }
         }
       },
@@ -436,6 +454,12 @@
           },
           "opponent_logo": {
             "name": "Opponent logo"
+          },
+          "home_logo": {
+            "name": "Home team logo"
+          },
+          "away_logo": {
+            "name": "Away team logo"
           }
         }
       },
