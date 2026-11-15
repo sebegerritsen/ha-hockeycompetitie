@@ -3,8 +3,8 @@
 A [Home Assistant](https://www.home-assistant.io/) integration, installable through [HACS](https://hacs.xyz/),
 for Dutch field and indoor hockey: the fixtures, results and standings of any team of any KNHB club.
 
-> **Status: early development (0.1.0).** It works, but has not been released or used much yet.
-> Expect changes. Feedback welcome, see [Contributing](#contributing).
+> **Status: early development (v0.1.0).** It works and is in use, but expect changes. Feedback welcome,
+> see [Contributing](#contributing).
 
 ## What it does
 

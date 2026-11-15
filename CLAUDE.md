@@ -29,6 +29,14 @@ Decided (Nov 2026):
   `translation_key`, coordinator with `config_entry=`, diagnostics with token/uuid redacted.
 - HACS: hacs.json, manifest with version, GitHub Actions for hassfest + HACS validation.
 
+## Releasing
+
+HACS installs from GitHub releases. For a new version: bump `version` in
+`custom_components/hockeycompetitie/manifest.json`, commit, wait for CI (Tests + Validate) to pass, then
+`gh release create vX.Y.Z --title vX.Y.Z --notes "…"` (the tag must match the manifest version; a full release,
+not just a tag). A README-only change needs no release. Submitted to the HACS default list on 15 Nov 2026
+(hacs/default PR #14206); never ask HACS maintainers for a review, it gets the PR closed.
+
 ## Testing locally
 
 Copy `custom_components/hockeycompetitie` into your Home Assistant `custom_components/` folder and restart
