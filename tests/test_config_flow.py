@@ -10,8 +10,8 @@ from homeassistant.data_entry_flow import FlowResultType
 from pytest_homeassistant_custom_component.common import MockConfigEntry
 from pytest_homeassistant_custom_component.test_util.aiohttp import AiohttpClientMocker
 
-from custom_components.knhb_hockey.config_flow import team_label, team_sort_key
-from custom_components.knhb_hockey.const import (
+from custom_components.hockeycompetitie.config_flow import team_label, team_sort_key
+from custom_components.hockeycompetitie.const import (
     CONF_CATEGORY,
     CONF_CLUB_ID,
     CONF_CLUB_NAME,
@@ -25,7 +25,7 @@ from custom_components.knhb_hockey.const import (
     CONF_TOKEN,
     DOMAIN,
 )
-from custom_components.knhb_hockey.models import Team
+from custom_components.hockeycompetitie.models import Team
 
 from .conftest import URL_CLUB, URL_CLUBS, URL_REGISTER, load_fixture
 

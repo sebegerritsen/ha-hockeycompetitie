@@ -1,11 +1,11 @@
 blueprint:
-  name: KNHB Hockey – reminder before meet time
+  name: Hockeycompetitie – reminder before meet time
   description: >-
     Reminds you a set time before the team meets for a match (the integration's
     *Meet time* sensor), with the venue, pitch and the weather forecast.
     Add travel time to the lead time: the meet time is when you need to be there.
   domain: automation
-  source_url: https://github.com/sebegerritsen/ha-knhb-hockey/blob/main/blueprints/automation/knhb_hockey/meet_time_reminder.yaml
+  source_url: https://github.com/sebegerritsen/ha-hockeycompetitie/blob/main/blueprints/automation/hockeycompetitie/meet_time_reminder.yaml
   input:
     meet_time_entity:
       name: Meet time sensor
@@ -13,7 +13,7 @@ blueprint:
       selector:
         entity:
           filter:
-            - integration: knhb_hockey
+            - integration: hockeycompetitie
               domain: sensor
               device_class: timestamp
     notify_device:

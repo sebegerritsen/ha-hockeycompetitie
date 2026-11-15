@@ -1,11 +1,11 @@
 blueprint:
-  name: KNHB Hockey – notify on match changes
+  name: Hockeycompetitie – notify on match changes
   description: >-
     Sends a notification to a phone when one of the team's matches is cancelled,
     back on, moved to another time, venue or pitch, or has a result.
-    Uses the team's *Match update* entity of the KNHB Hockey integration.
+    Uses the team's *Match update* entity of the Hockeycompetitie integration.
   domain: automation
-  source_url: https://github.com/sebegerritsen/ha-knhb-hockey/blob/main/blueprints/automation/knhb_hockey/match_update_notify.yaml
+  source_url: https://github.com/sebegerritsen/ha-hockeycompetitie/blob/main/blueprints/automation/hockeycompetitie/match_update_notify.yaml
   input:
     update_entity:
       name: Match update entity
@@ -13,7 +13,7 @@ blueprint:
       selector:
         entity:
           filter:
-            - integration: knhb_hockey
+            - integration: hockeycompetitie
               domain: event
     notify_device:
       name: Phone

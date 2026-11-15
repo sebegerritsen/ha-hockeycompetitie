@@ -4,8 +4,8 @@ from __future__ import annotations
 
 from datetime import UTC, datetime, timedelta
 
-from custom_components.knhb_hockey.coordinator import TeamData, match_duration, match_result
-from custom_components.knhb_hockey.models import (
+from custom_components.hockeycompetitie.coordinator import TeamData, match_duration, match_result
+from custom_components.hockeycompetitie.models import (
     Club,
     ClubDetail,
     Match,

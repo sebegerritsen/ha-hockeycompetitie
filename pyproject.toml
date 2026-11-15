@@ -1,5 +1,5 @@
 [project]
-name = "ha-knhb-hockey"
+name = "ha-hockeycompetitie"
 version = "0.1.0"
 description = "Home Assistant integration for Dutch hockey (KNHB): fixtures, results and standings"
 license = "MIT"
@@ -24,6 +24,6 @@ ignore = ["PLR0913", "PLR2004", "S101", "RUF001", "RUF002"]
 "tools/*" = ["S"]
 
 [tool.ruff.lint.isort]
-known-first-party = ["custom_components.knhb_hockey"]
+known-first-party = ["custom_components.hockeycompetitie"]
 force-sort-within-sections = true
 combine-as-imports = true

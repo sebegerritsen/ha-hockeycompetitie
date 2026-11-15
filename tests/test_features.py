@@ -16,7 +16,7 @@ from pytest_homeassistant_custom_component.common import (
 )
 from pytest_homeassistant_custom_component.test_util.aiohttp import AiohttpClientMocker
 
-from custom_components.knhb_hockey.const import (
+from custom_components.hockeycompetitie.const import (
     CONF_MEET_MINUTES_AWAY,
     CONF_MEET_MINUTES_HOME,
     DOMAIN,

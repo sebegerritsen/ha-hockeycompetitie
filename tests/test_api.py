@@ -13,7 +13,7 @@ from pytest_homeassistant_custom_component.test_util.aiohttp import (
     AiohttpClientMockResponse,
 )
 
-from custom_components.knhb_hockey.api import (
+from custom_components.hockeycompetitie.api import (
     KnhbAuthError,
     KnhbClient,
     KnhbConnectionError,

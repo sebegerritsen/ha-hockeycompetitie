@@ -1,10 +1,10 @@
 blueprint:
-  name: KNHB Hockey – match day summary
+  name: Hockeycompetitie – match day summary
   description: >-
     On match days, sends a short summary at a set time: opponent, kick-off, meet time,
     venue and the weather forecast. Uses the team's *Match today* entity.
   domain: automation
-  source_url: https://github.com/sebegerritsen/ha-knhb-hockey/blob/main/blueprints/automation/knhb_hockey/match_day_summary.yaml
+  source_url: https://github.com/sebegerritsen/ha-hockeycompetitie/blob/main/blueprints/automation/hockeycompetitie/match_day_summary.yaml
   input:
     match_today_entity:
       name: Match today
@@ -12,7 +12,7 @@ blueprint:
       selector:
         entity:
           filter:
-            - integration: knhb_hockey
+            - integration: hockeycompetitie
               domain: binary_sensor
     notify_device:
       name: Phone

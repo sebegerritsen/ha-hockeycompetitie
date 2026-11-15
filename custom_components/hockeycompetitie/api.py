@@ -21,7 +21,7 @@ _LOGGER = logging.getLogger(__name__)
 
 BASE_URL = "https://app.hockeyweerelt.nl"
 API_VERSION = "8"
-USER_AGENT = "ha-knhb-hockey (+https://github.com/sebegerritsen/ha-knhb-hockey)"
+USER_AGENT = "ha-hockeycompetitie (+https://github.com/sebegerritsen/ha-hockeycompetitie)"
 REQUEST_TIMEOUT = aiohttp.ClientTimeout(total=30)
 
 # The API allows 5 requests per minute per IP address. Stay below that, so that

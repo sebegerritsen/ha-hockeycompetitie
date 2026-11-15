@@ -5,13 +5,13 @@ from __future__ import annotations
 from dataclasses import replace
 from datetime import UTC, datetime
 
-from custom_components.knhb_hockey.changes import (
+from custom_components.hockeycompetitie.changes import (
     ChangeType,
     MatchState,
     detect_changes,
     updated_states,
 )
-from custom_components.knhb_hockey.models import Match, MatchStatus
+from custom_components.hockeycompetitie.models import Match, MatchStatus
 
 from .conftest import load_fixture
 

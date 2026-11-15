@@ -1,4 +1,4 @@
-"""Fixtures for the KNHB Hockey tests. All clubs, teams and people in them are made up."""
+"""Fixtures for the Hockeycompetitie tests. All clubs, teams and people in them are made up."""
 
 from __future__ import annotations
 
@@ -12,8 +12,8 @@ import pytest
 from pytest_homeassistant_custom_component.common import MockConfigEntry
 from pytest_homeassistant_custom_component.test_util.aiohttp import AiohttpClientMocker
 
-from custom_components.knhb_hockey.api import BASE_URL, RequestThrottle
-from custom_components.knhb_hockey.const import (
+from custom_components.hockeycompetitie.api import BASE_URL, RequestThrottle
+from custom_components.hockeycompetitie.const import (
     CONF_CATEGORY,
     CONF_CLUB_ID,
     CONF_CLUB_NAME,
@@ -61,7 +61,7 @@ def auto_enable_custom_integrations(enable_custom_integrations: None) -> None:
 def no_throttle() -> Generator[None]:
     """Don't space requests out in tests (the throttle has its own tests)."""
     with patch(
-        "custom_components.knhb_hockey.helpers.RequestThrottle",
+        "custom_components.hockeycompetitie.helpers.RequestThrottle",
         lambda: RequestThrottle(max_requests=1000),
     ):
         yield

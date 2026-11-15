@@ -16,12 +16,12 @@ from pytest_homeassistant_custom_component.common import (
 )
 from pytest_homeassistant_custom_component.test_util.aiohttp import AiohttpClientMocker
 
-from custom_components.knhb_hockey.const import DOMAIN, UPDATE_INTERVAL_SOON
+from custom_components.hockeycompetitie.const import DOMAIN, UPDATE_INTERVAL_SOON
 
 from .conftest import NOW
 from .test_features import _stored
 
-BLUEPRINTS = Path(__file__).parent.parent / "blueprints" / "automation" / "knhb_hockey"
+BLUEPRINTS = Path(__file__).parent.parent / "blueprints" / "automation" / "hockeycompetitie"
 NOTIFY = "    domain: mobile_app\n    type: notify\n"
 
 pytestmark = pytest.mark.usefixtures("dutch_time")
@@ -37,7 +37,7 @@ def _install(hass: HomeAssistant, tmp_path: Path, name: str) -> None:
         + "  - event: knhb_test_notify\n    event_data:\n"
         + "".join(f"  {line}\n" if line else "\n" for line in tail.splitlines())
     )
-    target = tmp_path / "blueprints" / "automation" / "knhb_hockey" / name
+    target = tmp_path / "blueprints" / "automation" / "hockeycompetitie" / name
     target.parent.mkdir(parents=True)
     target.write_text(text, encoding="utf-8")
     hass.config.config_dir = str(tmp_path)
@@ -50,7 +50,7 @@ async def _automation(hass: HomeAssistant, name: str, inputs: dict[str, Any]) ->
         {
             "automation": {
                 "use_blueprint": {
-                    "path": f"knhb_hockey/{name}",
+                    "path": f"hockeycompetitie/{name}",
                     "input": {"notify_device": "phone", **inputs},
                 }
             }

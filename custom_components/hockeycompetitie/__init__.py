@@ -1,4 +1,4 @@
-"""The KNHB Hockey integration: fixtures, results and standings of a KNHB team."""
+"""The Hockeycompetitie integration: fixtures, results and standings of a KNHB team."""
 
 from __future__ import annotations
 

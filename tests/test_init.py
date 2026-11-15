@@ -19,7 +19,7 @@ from pytest_homeassistant_custom_component.test_util.aiohttp import (
     AiohttpClientMockResponse,
 )
 
-from custom_components.knhb_hockey.const import (
+from custom_components.hockeycompetitie.const import (
     CONF_POULE_CHECKED,
     CONF_POULE_ID,
     CONF_TOKEN,
@@ -28,7 +28,7 @@ from custom_components.knhb_hockey.const import (
     UPDATE_INTERVAL_MATCH,
     UPDATE_INTERVAL_SOON,
 )
-from custom_components.knhb_hockey.diagnostics import async_get_config_entry_diagnostics
+from custom_components.hockeycompetitie.diagnostics import async_get_config_entry_diagnostics
 
 from .conftest import (
     NOW,

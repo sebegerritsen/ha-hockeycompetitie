@@ -1,4 +1,4 @@
-# KNHB Hockey for Home Assistant
+# Hockeycompetitie for Home Assistant
 
 A [Home Assistant](https://www.home-assistant.io/) integration, installable through [HACS](https://hacs.xyz/),
 for Dutch field and indoor hockey: the fixtures, results and standings of any team of any KNHB club.
@@ -38,7 +38,7 @@ Pick your club and team in the Home Assistant UI (no account needed). Per team y
 
 ### Options
 
-*Settings → Devices & services → KNHB Hockey → (team) → Configure*: when the team meets, in minutes
+*Settings → Devices & services → Hockeycompetitie → (team) → Configure*: when the team meets, in minutes
 before kick-off, for home and away matches (default 30). Travel time is not included.
 
 ### Blueprints
@@ -47,9 +47,9 @@ Ready-made automations that send a notification to your phone (Home Assistant ap
 
 | Blueprint | What it does | |
 |---|---|---|
-| Notify on match changes | a match is cancelled, back on, moved, or has a result | [![Import blueprint](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2Fsebegerritsen%2Fha-knhb-hockey%2Fblob%2Fmain%2Fblueprints%2Fautomation%2Fknhb_hockey%2Fmatch_update_notify.yaml) |
-| Reminder before meet time | a set time before the meet time, with venue, address and weather | [![Import blueprint](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2Fsebegerritsen%2Fha-knhb-hockey%2Fblob%2Fmain%2Fblueprints%2Fautomation%2Fknhb_hockey%2Fmeet_time_reminder.yaml) |
-| Match day summary | at a set time on match days: opponent, kick-off, meet time, venue, weather | [![Import blueprint](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2Fsebegerritsen%2Fha-knhb-hockey%2Fblob%2Fmain%2Fblueprints%2Fautomation%2Fknhb_hockey%2Fmatch_day_summary.yaml) |
+| Notify on match changes | a match is cancelled, back on, moved, or has a result | [![Import blueprint](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2Fsebegerritsen%2Fha-hockeycompetitie%2Fblob%2Fmain%2Fblueprints%2Fautomation%2Fhockeycompetitie%2Fmatch_update_notify.yaml) |
+| Reminder before meet time | a set time before the meet time, with venue, address and weather | [![Import blueprint](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2Fsebegerritsen%2Fha-hockeycompetitie%2Fblob%2Fmain%2Fblueprints%2Fautomation%2Fhockeycompetitie%2Fmeet_time_reminder.yaml) |
+| Match day summary | at a set time on match days: opponent, kick-off, meet time, venue, weather | [![Import blueprint](https://my.home-assistant.io/badges/blueprint_import.svg)](https://my.home-assistant.io/redirect/blueprint_import/?blueprint_url=https%3A%2F%2Fgithub.com%2Fsebegerritsen%2Fha-hockeycompetitie%2Fblob%2Fmain%2Fblueprints%2Fautomation%2Fhockeycompetitie%2Fmatch_day_summary.yaml) |
 
 ## Data source
 
@@ -71,13 +71,13 @@ every 3 hours from 48 hours before, and all teams together never more than 4 req
 Requires Home Assistant 2025.12 or newer.
 
 **HACS** (since Home Assistant 2026.11 part of the built-in *Marketplace*): add
-`https://github.com/sebegerritsen/ha-knhb-hockey` as a custom repository of type *Integration*, install
-**KNHB Hockey** and restart Home Assistant.
+`https://github.com/sebegerritsen/ha-hockeycompetitie` as a custom repository of type *Integration*, install
+**Hockeycompetitie** and restart Home Assistant.
 
-**Manually:** copy `custom_components/knhb_hockey` into the `custom_components` folder of your Home
+**Manually:** copy `custom_components/hockeycompetitie` into the `custom_components` folder of your Home
 Assistant configuration and restart Home Assistant.
 
-Then *Settings → Devices & services → Add integration → KNHB Hockey*: type part of your club's name or
+Then *Settings → Devices & services → Add integration → Hockeycompetitie*: type part of your club's name or
 town, pick the club, pick the team.
 
 ## Examples
@@ -130,4 +130,5 @@ use made-up or anonymised data.
 
 ## License
 
-[MIT](LICENSE)
+[MIT](LICENSE). The icon is drawn from [Material Design Icons](https://pictogrammers.com/library/mdi/)
+(Apache 2.0).

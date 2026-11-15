@@ -59,7 +59,7 @@ def match_event(data: TeamData, match: Match) -> CalendarEvent | None:
         summary=summary,
         description=description or None,
         location=location or None,
-        uid=f"knhb_hockey_{match.id}",
+        uid=f"hockeycompetitie_{match.id}",
     )
 
 

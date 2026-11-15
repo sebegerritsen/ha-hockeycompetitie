@@ -1,4 +1,4 @@
-"""Constants for the KNHB Hockey integration."""
+"""Constants for the Hockeycompetitie integration."""
 
 from __future__ import annotations
 
@@ -6,7 +6,7 @@ from datetime import timedelta
 import logging
 from typing import Final
 
-DOMAIN: Final = "knhb_hockey"
+DOMAIN: Final = "hockeycompetitie"
 LOGGER = logging.getLogger(__package__)
 
 # Config entry data
@@ -57,5 +57,5 @@ DEFAULT_MEET_MINUTES: Final = 30
 WEATHER_AHEAD: Final = timedelta(hours=48)
 WEATHER_REFRESH: Final = timedelta(hours=3)
 
-# Changes to matches are remembered across restarts in .storage/knhb_hockey.<entry id>
+# Changes to matches are remembered across restarts in .storage/hockeycompetitie.<entry id>
 STORAGE_VERSION: Final = 1

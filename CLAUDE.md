@@ -1,17 +1,21 @@
-# KNHB Hockey: notes for working on this repo
+# Hockeycompetitie: notes for working on this repo
 
-Public open-source project (GitHub: sebegerritsen/ha-knhb-hockey), meant for HACS. Everything in
+Public open-source project (GitHub: sebegerritsen/ha-hockeycompetitie), meant for HACS. Everything in
 this repo is public: **no personal data** — no names of family members, no real rosters, no tokens,
 no details of the owner's home setup. Use made-up teams/clubs or anonymised data in tests and examples.
 
 ## What it is
 
-A Home Assistant custom integration (`custom_components/knhb_hockey`, domain `knhb_hockey`) for
+A Home Assistant custom integration (`custom_components/hockeycompetitie`, domain `hockeycompetitie`) for
 Dutch hockey match data from the KNHB, the source behind hockey.nl's match centre. How the API works
 (device registration, request signing, endpoints, data shapes): docs/api.md. `tools/probe.py` calls it
 from the command line.
 
 Decided (Nov 2026):
+- Named **Hockeycompetitie** (domain `hockeycompetitie`; "KNHB Hockey"/`knhb_hockey` until 15 Nov 2026) so
+  it doesn't look like an official KNHB product: no "KNHB" in the name, domain or icon. The KNHB is
+  named only as the data source, with "not affiliated". Same rule as the sibling integrations
+  Competitie Voetbal and Tenniscompetitie.
 - Generic KNHB data, not LISA: works for every club without a login. LISA (club software, per-member
   login: trainings, attendance, duties) may come later as an optional extra.
 - One config entry per team. Config flow: search club → pick team (label `JO14-2 · Veld · Junioren`).
@@ -27,6 +31,6 @@ Decided (Nov 2026):
 
 ## Testing locally
 
-Copy `custom_components/knhb_hockey` into your Home Assistant `custom_components/` folder and restart
+Copy `custom_components/hockeycompetitie` into your Home Assistant `custom_components/` folder and restart
 Home Assistant (a new custom integration needs a restart). Personal setup notes (paths, hosts) belong
 in `CLAUDE.local.md`, which is git-ignored.
