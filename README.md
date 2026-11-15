@@ -70,6 +70,8 @@ every 3 hours from 48 hours before, and all teams together never more than 4 req
 
 Requires Home Assistant 2025.12 or newer.
 
+[![Open your Home Assistant instance and open this repository in HACS](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=sebegerritsen&repository=ha-hockeycompetitie&category=integration)
+
 **HACS** (since Home Assistant 2026.11 part of the built-in *Marketplace*): add
 `https://github.com/sebegerritsen/ha-hockeycompetitie` as a custom repository of type *Integration*, install
 **Hockeycompetitie** and restart Home Assistant.
