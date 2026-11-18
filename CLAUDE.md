@@ -34,8 +34,10 @@ Decided (Nov 2026):
 HACS installs from GitHub releases. For a new version: bump `version` in
 `custom_components/hockeycompetitie/manifest.json`, commit, wait for CI (Tests + Validate) to pass, then
 `gh release create vX.Y.Z --title vX.Y.Z --notes "…"` (the tag must match the manifest version; a full release,
-not just a tag). A README-only change needs no release. Submitted to the HACS default list on 15 Nov 2026
-(hacs/default PR #14206); never ask HACS maintainers for a review, it gets the PR closed.
+not just a tag). A README-only change needs no release. In the HACS default list since 17 Nov 2026
+(hacs/default PR #14206, merged by frenck), so users find it by searching in HACS / the Marketplace; the README
+leads with that and keeps the custom-repository steps as the fallback (frenck's request). Never ask HACS
+maintainers for a review unless they ask for one: unsolicited requests get PRs closed.
 
 ## Testing locally
 

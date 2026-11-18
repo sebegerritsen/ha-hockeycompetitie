@@ -72,9 +72,11 @@ Requires Home Assistant 2025.12 or newer.
 
 [![Open your Home Assistant instance and open this repository in HACS](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=sebegerritsen&repository=ha-hockeycompetitie&category=integration)
 
-**HACS** (since Home Assistant 2026.11 part of the built-in *Marketplace*): add
-`https://github.com/sebegerritsen/ha-hockeycompetitie` as a custom repository of type *Integration*, install
-**Hockeycompetitie** and restart Home Assistant.
+**HACS** (since Home Assistant 2026.11 part of the built-in *Marketplace*): search for **Hockeycompetitie**
+(or use the button above), install it and restart Home Assistant.
+
+If it doesn't show up, add `https://github.com/sebegerritsen/ha-hockeycompetitie` as a custom repository of
+type *Integration* first, then install it the same way.
 
 **Manually:** copy `custom_components/hockeycompetitie` into the `custom_components` folder of your Home
 Assistant configuration and restart Home Assistant.
